@@ -60,12 +60,19 @@
   gap: 0.65rem;
 }
 
-.brand-dot {
-  width: 0.72rem;
-  height: 0.72rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #a9c2f0, #d59c62);
-  box-shadow: 0 0 0 4px rgba(169, 194, 240, 0.12);
+.brand-mark {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f06d52, #7d8fcc);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 0 4px rgba(240, 109, 82, 0.12);
 }
 
 .brand-name {

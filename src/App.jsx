@@ -126,7 +126,9 @@ function App() {
         <section className="primary-panel" id="home">
           <header className="topbar">
             <div className="brand-lockup">
-              <span className="brand-dot"></span>
+              <span className="brand-mark" aria-hidden="true">
+                AS
+              </span>
               <span className="brand-name">Abhinav Sharma</span>
             </div>
             <nav className="topnav" aria-label="Primary">
