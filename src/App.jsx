@@ -121,265 +121,255 @@ function App() {
   }
 
   return (
-    <div className="neo-page">
-      <div className="site-frame">
-        <section className="primary-panel" id="home">
-          <header className="topbar">
-            <div className="brand-lockup">
-              <span className="brand-mark" aria-hidden="true">
-                AS
-              </span>
+    <div className="portfolio-page">
+      <div className="portfolio-shell">
+        <header className="topbar">
+          <div className="brand-lockup">
+            <span className="brand-mark" aria-hidden="true">
+              AS
+            </span>
+            <div className="brand-copy">
               <span className="brand-name">Abhinav Sharma</span>
+              <span className="brand-role">Full Stack Developer</span>
             </div>
-            <nav className="topnav" aria-label="Primary">
-              {navItems.map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`}>
-                  {item}
-                </a>
-              ))}
-            </nav>
-          </header>
+          </div>
+          <nav className="topnav" aria-label="Primary">
+            {navItems.map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`}>
+                {item}
+              </a>
+            ))}
+          </nav>
+        </header>
 
-          <div className="hero-shell">
-            <div className="hero-copy">
-              <p className="section-kicker">Hello.</p>
-              <h1>I&apos;m Abhinav Sharma</h1>
-              <h2 className="hero-title">Full Stack Developer</h2>
-              <p className="lead">
-                I&apos;m a 2026 Computer Science graduate focused on building professional web
-                products, reliable APIs, and polished user experiences.
+        <section className="hero-panel" id="home">
+          <div className="hero-copy">
+            <p className="section-kicker">Available for internships</p>
+            <h1>Abhinav Sharma</h1>
+            <p className="hero-title">Full Stack Developer</p>
+            <p className="lead">
+              I build reliable web applications with clean interfaces, stable APIs, and production
+              workflows that are easy to maintain.
+            </p>
+            <div className="hero-actions">
+              <button
+                type="button"
+                className="action-button action-primary"
+                onClick={() => copyText('sharma21072003@gmail.com', 'Email')}
+              >
+                Copy email
+              </button>
+              <a
+                className="action-button action-secondary"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=sharma21072003@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Send message
+              </a>
+            </div>
+            <div className="hero-metrics">
+              {highlights.map((item) => (
+                <div key={item.label} className="hero-metric">
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </div>
+              ))}
+            </div>
+            {feedback ? <p className="feedback">{feedback}</p> : null}
+          </div>
+
+          <div className="hero-profile">
+            <div className="hero-portrait-frame">
+              <img src={profilePhoto} alt="Abhinav Sharma portrait" />
+            </div>
+            <div className="hero-profile-copy">
+              <p>Based in Mandi, Himachal Pradesh</p>
+              <p>React, Node.js, MongoDB, React Native</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="content-grid">
+          <div className="main-column">
+            <section className="panel" id="about">
+              <p className="section-kicker">About me</p>
+              <h2>I build practical products with thoughtful UI and dependable backend work.</h2>
+              <p>
+                I am a B.Tech Computer Science and Engineering graduate from DAV Institute of
+                Engineering and Technology, Jalandhar. My experience spans frontend systems, API
+                integration, database-backed features, debugging, and product delivery.
               </p>
-              <div className="hero-stats" aria-label="Professional highlights">
-                {highlights.map((item) => (
-                  <div key={item.label} className="hero-stat">
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
-                  </div>
+            </section>
+
+            <section className="panel" id="work">
+              <div className="section-heading">
+                <p className="section-kicker">Experience</p>
+                <h2>Internship experience focused on shipping real work.</h2>
+              </div>
+              <div className="stack-list">
+                {experience.map((item) => (
+                  <article key={item.company} className="stack-item stack-item-expandable">
+                    <button
+                      type="button"
+                      className="detail-toggle"
+                      onClick={() =>
+                        setOpenExperience((current) => (current === item.id ? '' : item.id))
+                      }
+                      aria-expanded={openExperience === item.id}
+                    >
+                      <span>{item.period}</span>
+                      <h3>{item.role}</h3>
+                      <strong>{item.company}</strong>
+                      <p>{item.summary}</p>
+                    </button>
+                    {openExperience === item.id ? (
+                      <div className="detail-panel">
+                        <ul className="detail-list">
+                          {item.details.map((detail) => (
+                            <li key={detail}>{detail}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </article>
                 ))}
               </div>
-              <div className="hero-actions">
-                <button
-                  type="button"
-                  className="action-button action-primary"
-                  onClick={() => copyText('sharma21072003@gmail.com', 'Email')}
-                >
-                  Copy email
+            </section>
+
+            <section className="panel">
+              <div className="section-heading">
+                <p className="section-kicker">Projects</p>
+                <h2>Selected work that shows product thinking and implementation.</h2>
+              </div>
+              <div className="project-stack">
+                {projects.map((project) => (
+                  <article key={project.title} className="project-tile project-tile-expandable">
+                    <button
+                      type="button"
+                      className="detail-toggle"
+                      onClick={() =>
+                        setOpenProject((current) => (current === project.id ? '' : project.id))
+                      }
+                      aria-expanded={openProject === project.id}
+                    >
+                      <span>{project.category}</span>
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                    </button>
+                    {openProject === project.id ? (
+                      <div className="detail-panel">
+                        <ul className="detail-list">
+                          {project.details.map((detail) => (
+                            <li key={detail}>{detail}</li>
+                          ))}
+                        </ul>
+                        <a href={project.link} target="_blank" rel="noreferrer">
+                          Open project
+                        </a>
+                      </div>
+                    ) : null}
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="panel education-card">
+              <div className="section-heading">
+                <p className="section-kicker">Education</p>
+                <h2>B.Tech Computer Science and Engineering</h2>
+              </div>
+              <button
+                type="button"
+                className="detail-toggle"
+                onClick={() => setEducationOpen((current) => !current)}
+                aria-expanded={educationOpen}
+              >
+                <p>DAV Institute of Engineering and Technology, Jalandhar</p>
+                <span>Jul 2022 - Jul 2026</span>
+              </button>
+              {educationOpen ? (
+                <div className="detail-panel">
+                  <p className="education-detail">
+                    Senior secondary education was completed at Govt. Sen. Sec. School Khar Kalan
+                    (H.P.).
+                  </p>
+                  <p className="section-kicker certifications-kicker">Certifications</p>
+                  <ul className="detail-list">
+                    {certifications.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </section>
+          </div>
+
+          <aside className="side-column" id="contact">
+            <section className="panel intro-card">
+              <div className="mini-portrait">
+                <img src={profilePhoto} alt="Abhinav Sharma portrait" />
+              </div>
+              <p className="section-kicker">Contact</p>
+              <p className="card-copy">
+                Full-stack developer with internship experience across frontend systems, backend
+                APIs, and database-driven applications.
+              </p>
+              <div className="contact-list">
+                <button type="button" onClick={() => copyText('+91 78766 59026', 'Phone number')}>
+                  Copy phone
                 </button>
                 <a
-                  className="action-button action-secondary"
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=sharma21072003@gmail.com"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Send message
+                  Email me
                 </a>
               </div>
-              <ul className="meta-strip">
-                <li>Mandi, Himachal Pradesh</li>
-                <li>Open to internships</li>
-                <li>English / Hindi</li>
-              </ul>
-              {feedback ? <p className="feedback">{feedback}</p> : null}
-            </div>
+            </section>
 
-            <div className="hero-visual" aria-hidden="true">
-              <div className="hero-portrait-frame">
-                <img src={profilePhoto} alt="" />
+            <section className="panel">
+              <div className="section-heading">
+                <p className="section-kicker">Skills</p>
+                <h2>Core technologies I use regularly.</h2>
               </div>
-              <div className="hero-visual-ring" />
-              <div className="hero-visual-copy">
-                <span>Software Developer</span>
-                <strong>Designing clean, production-ready interfaces.</strong>
+              <div className="skills-bars">
+                {skillBars.map((skill) => (
+                  <div key={skill.label} className="skill-meter">
+                    <div className="skill-meta">
+                      <span>{skill.label}</span>
+                      <span>{skill.level}</span>
+                    </div>
+                    <div className="skill-track">
+                      <div className="skill-fill" style={{ width: skill.level }} />
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
+              <div className="chip-cloud">
+                {skillCloud.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </section>
 
-          <section className="about-block" id="about">
-            <div className="photo-bubble">
-              <img src={profilePhoto} alt="Abhinav Sharma portrait" />
-            </div>
-
-            <div className="about-copy">
-              <p className="section-kicker">About me</p>
-              <h2>I build polished interfaces and dependable backend systems.</h2>
-              <p>
-                I design responsive interfaces, connect them to dependable APIs, and ship features
-                that are practical to use in real products. My experience spans React, Node.js,
-                MongoDB, React Native, debugging, deployment, and frontend troubleshooting.
-              </p>
-              <p className="about-extra">
-                I am a B.Tech Computer Science and Engineering graduate from DAV Institute of
-                Engineering and Technology, Jalandhar, and I have been building toward full-stack
-                product roles through internships, project work, and tool-driven development.
-              </p>
-              <ul className="bullet-list">
-                <li>Web UI and frontend implementation</li>
-                <li>Node.js APIs and service integration</li>
-                <li>Database-backed application flows</li>
-                <li>Mobile-oriented experience with React Native</li>
-              </ul>
-            </div>
-          </section>
-
-          <section className="skills-block" id="work">
-            <div className="section-heading">
-              <p className="section-kicker">My skills</p>
-              <h2>Core strengths shaped by internships and shipped projects.</h2>
-            </div>
-
-            <div className="skills-bars">
-              {skillBars.map((skill) => (
-                <div key={skill.label} className="skill-meter">
-                  <div className="skill-meta">
-                    <span>{skill.label}</span>
-                    <span>{skill.level}</span>
-                  </div>
-                  <div className="skill-track">
-                    <div className="skill-fill" style={{ width: skill.level }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="chip-cloud">
-              {skillCloud.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-
-            <div className="extended-summary">
-              <article className="summary-card">
+            <section className="panel">
+              <div className="section-heading">
                 <p className="section-kicker">Strengths</p>
-                <p>
-                  My strongest combination is frontend execution plus API-backed application
-                  delivery. I move from interface building to backend integration, database work,
-                  and debugging without breaking product flow.
-                </p>
-              </article>
-              <article className="summary-card">
-                <p className="section-kicker">What I work with</p>
-                <p>
-                  JavaScript is my primary working language, supported by React, Next.js, Node.js,
-                  Express, MongoDB, Git, GitHub, React Native, Expo, and AI-assisted development
-                  tools such as Codex, Claude, and Cursor.
-                </p>
-              </article>
-            </div>
-          </section>
-        </section>
-
-        <aside className="secondary-panel" id="contact">
-          <section className="card intro-card">
-            <div className="mini-portrait">
-              <img src={profilePhoto} alt="Abhinav Sharma portrait" />
-            </div>
-            <p className="section-kicker">About me</p>
-            <p className="card-copy">
-              Full-stack developer with internship experience across frontend systems, backend
-              APIs, and database-driven applications.
-            </p>
-            <div className="contact-list">
-              <button type="button" onClick={() => copyText('+91 78766 59026', 'Phone number')}>
-                Copy phone
-              </button>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sharma21072003@gmail.com" target="_blank" rel="noreferrer">
-                Email me
-              </a>
-            </div>
-          </section>
-
-          <section className="card experience-card">
-            <p className="section-kicker">My resume</p>
-            <div className="stack-list">
-              {experience.map((item) => (
-                <article key={item.company} className="stack-item stack-item-expandable">
-                  <button
-                    type="button"
-                    className="detail-toggle"
-                    onClick={() =>
-                      setOpenExperience((current) => (current === item.id ? '' : item.id))
-                    }
-                    aria-expanded={openExperience === item.id}
-                  >
-                    <span>{item.period}</span>
-                    <h3>{item.role}</h3>
-                    <strong>{item.company}</strong>
-                    <p>{item.summary}</p>
-                  </button>
-                  {openExperience === item.id ? (
-                    <div className="detail-panel">
-                      <ul className="detail-list">
-                        {item.details.map((detail) => (
-                          <li key={detail}>{detail}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="card recent-work-card">
-            <p className="section-kicker">Recent work</p>
-            <div className="project-stack">
-              {projects.map((project) => (
-                <article key={project.title} className="project-tile project-tile-expandable">
-                  <button
-                    type="button"
-                    className="detail-toggle"
-                    onClick={() => setOpenProject((current) => (current === project.id ? '' : project.id))}
-                    aria-expanded={openProject === project.id}
-                  >
-                    <span>{project.category}</span>
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                  </button>
-                  {openProject === project.id ? (
-                    <div className="detail-panel">
-                      <ul className="detail-list">
-                        {project.details.map((detail) => (
-                          <li key={detail}>{detail}</li>
-                        ))}
-                      </ul>
-                      <a href={project.link} target="_blank" rel="noreferrer">
-                        Open project
-                      </a>
-                    </div>
-                  ) : null}
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="card education-card">
-            <p className="section-kicker">Education</p>
-            <button
-              type="button"
-              className="detail-toggle"
-              onClick={() => setEducationOpen((current) => !current)}
-              aria-expanded={educationOpen}
-            >
-              <h3>B.Tech Computer Science and Engineering</h3>
-              <p>DAV Institute of Engineering and Technology, Jalandhar</p>
-              <span>Jul 2022 - Jul 2026</span>
-            </button>
-            {educationOpen ? (
-              <div className="detail-panel">
-                <p className="education-detail">
-                  Completed B.Tech in Computer Science and Engineering. Senior secondary education
-                  was completed at Govt. Sen. Sec. School Khar Kalan (H.P.).
-                </p>
-                <p className="section-kicker certifications-kicker">Certifications</p>
-                <ul className="detail-list">
-                  {certifications.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <h2>What I bring to a team.</h2>
               </div>
-            ) : null}
-          </section>
-        </aside>
+              <div className="summary-card">
+                <p>
+                  I move from interface building to backend integration, database work, and
+                  debugging without breaking product flow. JavaScript is my primary working
+                  language, supported by React, Next.js, Node.js, Express, MongoDB, Git, GitHub,
+                  React Native, and Expo.
+                </p>
+              </div>
+            </section>
+          </aside>
+        </section>
       </div>
     </div>
   )

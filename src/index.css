@@ -1,9 +1,9 @@
 :root {
-  color: #e7edf6;
+  color: #10192a;
   background:
-    radial-gradient(circle at top left, rgba(241, 170, 122, 0.22), transparent 20%),
-    radial-gradient(circle at top right, rgba(96, 120, 176, 0.16), transparent 18%),
-    linear-gradient(180deg, #ebe0d8 0%, #d9d0c8 100%);
+    radial-gradient(circle at top left, rgba(110, 126, 150, 0.18), transparent 20%),
+    radial-gradient(circle at top right, rgba(219, 160, 110, 0.14), transparent 18%),
+    linear-gradient(180deg, #ece5dd 0%, #d7cfc6 100%);
   font-family:
     'Aptos',
     'Segoe UI',
@@ -29,7 +29,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  color: #e7edf6;
+  color: #10192a;
   background: transparent;
 }
 
