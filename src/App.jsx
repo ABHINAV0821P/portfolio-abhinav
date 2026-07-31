@@ -264,7 +264,12 @@ function App() {
                             <li key={detail}>{detail}</li>
                           ))}
                         </ul>
-                        <a href={project.link} target="_blank" rel="noreferrer">
+                        <a
+                          className="project-link"
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           Open project
                         </a>
                       </div>

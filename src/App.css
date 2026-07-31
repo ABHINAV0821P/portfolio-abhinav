@@ -362,6 +362,27 @@
   gap: 0.8rem;
 }
 
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2.6rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.8rem;
+  background: #10192a;
+  border: 1px solid #1f2d46;
+  color: #f8fafc;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(8, 12, 22, 0.22);
+}
+
+.project-link:hover {
+  background: #16243b;
+  color: #ffffff;
+}
+
 .detail-panel {
   margin-top: 0.85rem;
   padding-top: 0.85rem;
